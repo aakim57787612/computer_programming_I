@@ -170,9 +170,9 @@ Date computeCurrentDate()
 	now.day = 1;
 	now.month = 1;
 	int m[13] = { 0,31,28,31,30,31,30,31,31,30,31,30,31 };
-	int second = static_cast<unsigned int>(time(0)) + 8 * 60 * 60;//®æªL«Âªv®É¶¡+8hr¤~¬O¥xÆWªº
+	int second = static_cast<unsigned int>(time(0)) + 8 * 60 * 60;//æ ¼æž—å¨æ²»æ™‚é–“+8hræ‰æ˜¯å°ç£çš„
 
-	while (second > 365 * 24 * 60 * 60) {//¦~
+	while (second > 365 * 24 * 60 * 60) {//å¹´
 		int a = 365 * 24 * 60 * 60;
 		if (leapYear(now.year)) {
 			a += 24 * 60 * 60;
@@ -183,12 +183,12 @@ Date computeCurrentDate()
 
 	if (leapYear(now.year))
 		m[1] = 29;
-	while (second > m[now.month] * 24 * 60 * 60) {//¤ë
+	while (second > m[now.month] * 24 * 60 * 60) {//æœˆ
 		second -= m[now.month] * 24 * 60 * 60;
 		now.month++;
 	}
 
-	while (second > 24 * 60 * 60) {//¤é
+	while (second > 24 * 60 * 60) {//æ—¥
 		second -= 24 * 60 * 60;
 		now.day++;
 	}
@@ -271,7 +271,7 @@ Date add(Date date, int numDays)
 void initAvailTables(vector< AvailTable > &availTables, Date currentDate)
 {
 	int numDays = 1;
-	fstream file_writer("AvailTables1.dat", ios::out);//²MªÅÀÉ®×
+	fstream file_writer("AvailTables1.dat", ios::out);//æ¸…ç©ºæª”æ¡ˆ
 	availTables.resize(31);
 	while (numDays <= 30) {
 		availTables[numDays].date = add(currentDate, numDays);
